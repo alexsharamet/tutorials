@@ -8,8 +8,8 @@ __global__ void init5(int* arr, int n){
 __global__ void init7(int* arr,int n){
 	int idx=blockDim.x*blockIdx.x+threadIdx.x;
 	int idy=blockDim.y*blockIdx.y+threadIdx.y;
-
-	arr[idy*n+idx]=7;
+	if(idx<n && idy<n)
+		arr[idy*n+idx]=7;
 }
 
 __host__ void printMtrx(int* const mtrx,const int n){
